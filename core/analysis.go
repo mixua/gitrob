@@ -63,13 +63,20 @@ func GatherRepositories(sess *Session) {
 	sess.Out.Debug("Threads for repository gathering: %d\n", threadNum)
 	for i := 0; i < threadNum; i++ {
 		go func() {
+		    var repos []*common.Repository
+	        var err error
 			for {
 				target, ok := <-ch
 				if !ok {
 					wg.Done()
 					return
 				}
-				repos, err := sess.Client.GetRepositoriesFromOwner(*target)
+				if common.TargetTypeOrganization == "Organization" {
+		            repos, err = sess.Client.GetRepositoriesFromOrganization(*target)
+
+	            } else {
+		            repos, err = sess.Client.GetRepositoriesFromOwner(*target)
+	            }
 				if err != nil {
 					sess.Out.Error(" Failed to retrieve repositories from %s: %s\n", *target.Login, err)
 				}
