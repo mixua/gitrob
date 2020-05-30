@@ -108,3 +108,9 @@ Gitrob will need either a GitLab or Github access token in order to interact wit
     export GITROB_GITHUB_ACCESS_TOKEN=deadbeefdeadbeefdeadbeefdeadbeefdeadbeef
 
 Alternatively you can specify the access token with the `-gitlab-access-token` or `-github-access-token` option on the command line, but watch out for your command history!
+
+## Feature
+
+Added function `GetRepositoriesFromOrganization` that let scan private repositories.
+
+TODO: add instructions on how to configure ssh client in order to get access to fetch private repositories.
