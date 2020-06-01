@@ -100,7 +100,7 @@ func (c Client) GetRepositoriesFromOrganization(target common.Owner) ([]*common.
 					ID:            repo.ID,
 					Name:          repo.Name,
 					FullName:      repo.FullName,
-					CloneURL:      repo.CloneURL,
+					CloneURL:      repo.SSHURL,
 					URL:           repo.HTMLURL,
 					DefaultBranch: repo.DefaultBranch,
 					Description:   repo.Description,
